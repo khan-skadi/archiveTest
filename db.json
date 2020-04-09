@@ -1,0 +1,20 @@
+{
+  "logs": [
+    {
+      "locationFrom": "Yerevan",
+      "locationTo": "Vilnius",
+      "distance": "400",
+      "postedOn": "02.14.2020",
+      "postedBy": "Admin",
+      "attention": true,
+      "progress": false,
+      "driver": "Peter Kartalov",
+      "price": "1200",
+      "date": "2020-02-14T07:24:00.184Z",
+      "id": 18
+    }
+  ]
+}
+{
+    "log": {}
+}

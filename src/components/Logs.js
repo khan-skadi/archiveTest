@@ -1,7 +1,18 @@
-import React from 'react';
-import LogsItem from './logs/LogsItem.js';
+import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import { addLog } from '../redux/actions/logActions.js';
+import LogItem from './logs/LogItem.js';
 
-const Logs = () => {
+const Log = ({ addLog, log: { logs } }) => {
+  const [locationFrom, setLocationFrom] = useState('');
+
+  const handleSubmit = () => {
+    const newLog = {
+      locationFrom
+    };
+    addLog(newLog);
+  };
+
   return (
     <div className="section section-logs">
       <h2>Logs</h2>
@@ -26,10 +37,33 @@ const Logs = () => {
             Posted By
           </a>
         </li>
-        <LogsItem />
+        {logs.map((log) => (
+          <LogItem log={log} />
+        ))}
       </ul>
+      <div className="col s12">
+        <div className="input-field col s6">
+          <input
+            id="locationFrom"
+            type="text"
+            className="validate"
+            onChange={(e) => setLocationFrom(e.target.value)}
+            value={locationFrom}
+          />
+          <label htmlFor="locationFrom">Location From</label>
+        </div>
+        <div className="col s12">
+          <a
+            href="#!"
+            className="waves-effect waves-light btn"
+            onClick={handleSubmit}
+          >
+            Submit
+          </a>
+        </div>
+      </div>
     </div>
   );
 };
 
-export default Logs;
+export default connect(null, { addLog })(Log);

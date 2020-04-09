@@ -1,8 +1,11 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import Logs from '../components/Logs.js';
 
-const LandingPage = () => {
+const LandingPage = (props) => {
+  const { log } = props;
+
   return (
     <div className="container">
       <div className="row center-align">
@@ -15,11 +18,18 @@ const LandingPage = () => {
           </ul>
         </div>
         <div className="col s12">
-          <Logs />
+          <Logs log={log} />
         </div>
       </div>
     </div>
   );
 };
 
-export default LandingPage;
+const mapStateToProps = (state) => {
+  console.log(state);
+  return {
+    log: state.log
+  };
+};
+
+export default connect(mapStateToProps)(LandingPage);
