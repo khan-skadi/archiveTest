@@ -26,7 +26,6 @@ const LandingPage = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return {
     log: state.log
   };
